@@ -1,0 +1,271 @@
+<!DOCTYPE html PUBLIC "-//IETF//DTD HTML 3.0//EN">
+<!--Converted with LaTeX2HTML 96.1 (Feb 5, 1996) by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds -->
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=windows-1252">
+<title>War Story: String 'em Up</title>
+<meta name="description" content="War Story: String 'em Up">
+<meta name="keywords" content="book">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<link rel="STYLESHEET" href="War%20Story%20%20String%20'em%20Up_files/book.html">
+</head>
+<body lang="EN">
+ <a name="tex2html3754" href="https://www8.cs.umu.se/kurser/TDBA77/VT06/algorithms/BOOK/BOOK/NODE40.HTM"><img alt="next" src="War%20Story%20%20String%20'em%20Up_files/NEXT_TIF.GIF" width="37" height="24" align="BOTTOM"></a> <a name="tex2html3752" href="https://www8.cs.umu.se/kurser/TDBA77/VT06/algorithms/BOOK/BOOK/NODE22.HTM"><img alt="up" src="War%20Story%20%20String%20'em%20Up_files/00000016.GIF" width="26" height="24" align="BOTTOM"></a> <a name="tex2html3746" href="https://www8.cs.umu.se/kurser/TDBA77/VT06/algorithms/BOOK/BOOK/NODE38.HTM"><img alt="previous" src="War%20Story%20%20String%20'em%20Up_files/PS_MOTIF.GIF" width="63" height="24" align="BOTTOM"></a> <a name="tex2html3756" href="https://www8.cs.umu.se/kurser/TDBA77/VT06/algorithms/BOOK/BOOK/NODE4.HTM"><img alt="contents" src="War%20Story%20%20String%20'em%20Up_files/CONTOTIF.GIF" width="65" height="24" align="BOTTOM"></a> <a name="tex2html3757" href="https://www8.cs.umu.se/kurser/TDBA77/VT06/algorithms/BOOK/BOOK5/NODE233.HTM"><img alt="index" src="War%20Story%20%20String%20'em%20Up_files/INDEOTIF.GIF" width="43" height="24" align="BOTTOM"></a> <a href="https://www8.cs.umu.se/kurser/TDBA77/VT06/algorithms/INDEX.HTM"><img alt="CD" src="War%20Story%20%20String%20'em%20Up_files/CDHOME08.GIF" align="BOTTOM"></a> <a href="https://www8.cs.umu.se/kurser/TDBA77/VT06/algorithms/LEC/LECTURES/ALL.HTM"><img alt="CD" src="War%20Story%20%20String%20'em%20Up_files/LECHOME5.GIF" align="BOTTOM"></a> <a href="https://www8.cs.umu.se/kurser/TDBA77/VT06/algorithms/WEBSITE/INDEX.HTM"><img alt="Algorithms" src="War%20Story%20%20String%20'em%20Up_files/ALGO0006.GIF" align="BOTTOM"></a> <br>
+<b> Next:</b> <a name="tex2html3755" href="https://www8.cs.umu.se/kurser/TDBA77/VT06/algorithms/BOOK/BOOK/NODE40.HTM">Exercises</a>
+<b>Up:</b> <a name="tex2html3753" href="https://www8.cs.umu.se/kurser/TDBA77/VT06/algorithms/BOOK/BOOK/NODE22.HTM">Data Structures and Sorting</a>
+<b> Previous:</b> <a name="tex2html3747" href="https://www8.cs.umu.se/kurser/TDBA77/VT06/algorithms/BOOK/BOOK/NODE38.HTM">War Story: Mystery of </a>
+<br> <p>
+</p><h1><a name="SECTION02280000000000000000">War Story: String 'em Up</a></h1>
+<p>
+<a name="stringwarstory">&nbsp;</a>
+</p><p>
+Biologists are hard at work on a fifteen-year project to sequence the
+human genome.
+This pattern of nucleotides encodes all
+the information necessary to build the proteins that we are built of.
+This project has already had an enormous impact on medicine and 
+molecular biology.
+<a name="1537">&nbsp;</a>
+</p><p>
+Algorists have become interested in the human genome project
+as well, for several reasons:
+</p><p>
+</p><ul><li>
+DNA sequences can be accurately represented as strings of characters
+on the four-letter alphabet (A,C,T,G).
+Biologist's needs have sparked new interest in old algorithmic
+problems (such as string matching - see Section <a href="https://www8.cs.umu.se/kurser/TDBA77/VT06/algorithms/BOOK/BOOK5/NODE203.HTM#stringmatching"><img alt="gif" src="War%20Story%20%20String%20'em%20Up_files/CROSOTIF.GIF" align="BOTTOM"></a>)
+as well
+as creating new problems of substantial interest (such as shortest
+common superstring - see Section <a href="https://www8.cs.umu.se/kurser/TDBA77/VT06/algorithms/BOOK/BOOK5/NODE209.HTM#shortestcommonsuperstring"><img alt="gif" src="War%20Story%20%20String%20'em%20Up_files/CROSOTIF.GIF" align="BOTTOM"></a>).
+<a name="1541">&nbsp;</a></li><li>
+DNA sequences are very <em>long</em> strings.
+The human genome is approximately three billion base pairs (or characters)
+long.
+Thus sophisticated computational techniques are necessary to deal with them.
+Such large problem sizes means that asymptotic (big-Oh) complexity
+analysis is usually fully justified on biological problems.</li><li>
+Enough money is being invested in the human genome project
+for computer scientists to want to claim their piece of the action.
+<p>
+</p></li></ul>
+<p>
+My particular interest in computational biology has revolved around
+a recently proposed but algorithmically intensive technique for DNA sequencing
+called sequencing by hybridization (SBH) [<a href="https://www8.cs.umu.se/kurser/TDBA77/VT06/algorithms/BOOK/BOOK5/NODE232.HTM#CK95">CK94</a>, <a href="https://www8.cs.umu.se/kurser/TDBA77/VT06/algorithms/BOOK/BOOK5/NODE232.HTM#PL92">PL94</a>].
+The traditional sequencing by hybridization procedure attaches a set of
+probes to an array, forming a <em>sequencing chip</em>.
+Each of these probes determines whether or not the
+probe string occurs as a substring of the DNA target.
+The target DNA can now be sequenced based on the constraints of
+which strings are and are not substrings of the target.
+<a name="1546">&nbsp;</a><a name="1547">&nbsp;</a><a name="1548">&nbsp;</a>
+</p><p>
+One problem with SBH is that enormous arrays (say  <img alt="tex2html_wrap_inline24190" src="War%20Story%20%20String%20'em%20Up_files/IMG241.GIF" width="63" height="21" align="MIDDLE">  strings)
+are necessary to sequence relatively short pieces of DNA (typically
+about 200 base pairs long).
+The major reason is that all of these  <img alt="tex2html_wrap_inline24192" src="War%20Story%20%20String%20'em%20Up_files/IMG242.GIF" width="10" height="10" align="BOTTOM">  probes are made at the
+same time.
+If you want to look up a name in the telephone book but are only allowed
+to consult the book once, you must copy down every single name from the 
+book at that time.
+But if you are allowed to ask ``is the name before Mendoza?'' and wait
+for the answer before asking your next question, you can use binary
+search to greatly reduce your total effort.
+</p><p>
+We were convinced that using several small arrays would be more efficient
+than using one big array.
+We even had theory to justify our technique, but
+biologists aren't very inclined to believe theory.
+They demand experiments for proof.
+Hence we had to implement our algorithms and use simulation to prove
+that they worked.
+</p><p>
+So much for motivation.
+The rest of this tale will demonstrate the impact that clever data structures
+can have on a string processing application.
+</p><p>
+Our technique involved identifying all the strings of length
+<em>2k</em> that are possible substrings of an unknown string <em>S</em>, given
+that we know all length <em>k</em> substrings of <em>S</em>.
+For example, suppose we know that <em>AC</em>, <em>CA</em>, and <em>CC</em> are the only
+length-2 substrings of <em>S</em>.
+It is certainly possible that <em>ACCA</em> is a substring of <em>S</em>, since the
+center substring is one of our possibilities.
+However, <em>CAAC</em> <em>cannot</em> be a substring of <em>S</em>, since we know that
+<em>AA</em> is not a substring of <em>S</em>.
+We needed to find a fast algorithm to construct all the consistent
+length-<em>2k</em> strings, since <em>S</em> could be very long.
+</p><p>
+</p><p><a name="1881">&nbsp;</a> <img alt="figure1875" src="War%20Story%20%20String%20'em%20Up_files/IMG243.GIF" width="271" height="130" align="BOTTOM"> <br>
+<strong>Figure:</strong> The concatentation of two fragments can be in <em>S</em> only
+if all subfragments are <a name="substring">&nbsp;</a><br>
+</p><p>
+</p><p>
+The simplest algorithm to build the <em>2k</em> strings would be to concatenate
+all  <img alt="tex2html_wrap_inline24194" src="War%20Story%20%20String%20'em%20Up_files/IMG240.GIF" width="30" height="20" align="MIDDLE">  pairs of <em>k</em>-strings together, and then for each pair to
+make sure that all (<i>k</i>-1) length-<em>k</em> substrings spanning the boundary of the
+concatenation were in fact substrings, as shown in Figure <a href="https://www8.cs.umu.se/kurser/TDBA77/VT06/algorithms/BOOK/BOOK/NODE39.HTM#substring"><img alt="gif" src="War%20Story%20%20String%20'em%20Up_files/CROSOTIF.GIF" align="BOTTOM"></a>.
+For example, the nine possible concatenations of <em>AC</em>, <em>CA</em>, and <em>CC</em>
+are <em>ACAC</em>, <em>ACCA</em>, <em>ACCC</em>, <em>CAAC</em>, <em>CACA</em>, <em>CACC</em>, <em>CCAC</em>, <em>CCCA</em>,
+and <em>CCCC</em>.
+Only <em>CAAC</em> can be eliminated because of the absence of <em>AA</em>.
+</p><p>
+We needed a fast way of testing whether each of the <em>k-1</em>
+substrings straddling the concatenation was a member of
+our dictionary of permissible <em>k</em>-strings.
+The time it takes to do this depends upon which kind of data structure
+we use to maintain this dictionary.
+With a binary search tree, we could find the correct string
+within  <img alt="tex2html_wrap_inline24198" src="War%20Story%20%20String%20'em%20Up_files/IMG74.GIF" width="36" height="18" align="MIDDLE">  comparisons, where each comparison involved testing which of
+two length-<em>k</em> strings appeared first in alphabetical order.
+Since each such comparison could require testing <em>k</em> pairs of characters,
+the total time using a binary search tree would be  <img alt="tex2html_wrap_inline24200" src="War%20Story%20%20String%20'em%20Up_files/IMG246.GIF" width="51" height="18" align="MIDDLE"> .
+<a name="1592">&nbsp;</a>
+</p><p>
+That seemed pretty good.
+So my graduate student Dimitris Margaritis implemented a binary search
+tree data structure for our implementation.
+It worked great up until the moment we ran it.
+</p><p>
+``I've tried the fastest computer in our department, but
+our program is too slow,'' Dimitris complained.
+``It takes forever on strings of length only 2,000 characters.
+We will never get up to 50,000.''
+</p><p>
+For interactive SBH to be competitive as a sequencing method, we had to
+be able to sequence long fragments of DNA, ideally over 50 kilobases
+in length.
+If we couldn't speed up the program, we would be in the embarrassing position
+of having a biological technique invented by computer scientists fail
+because the computations took too long.
+</p><p>
+We profiled our program and discovered that almost all the time was
+spent searching in this data structure, which was no surprise.
+For each of the  <img alt="tex2html_wrap_inline24202" src="War%20Story%20%20String%20'em%20Up_files/IMG240.GIF" width="30" height="20" align="MIDDLE">  possible concatenations, we did this
+<em>k-1</em> times.
+We needed a faster dictionary data structure, since search was the innermost
+operation in such a deep loop.
+</p><p>
+``What about using a hash table?'' I suggested.
+``If we do it right, it should take <i>O</i>(<i>k</i>) time to hash a <em>k</em>-character
+string and look it up in our table.
+That should knock off a factor of  <img alt="tex2html_wrap_inline24206" src="War%20Story%20%20String%20'em%20Up_files/IMG248.GIF" width="42" height="18" align="MIDDLE"> , which will mean something
+when  <img alt="tex2html_wrap_inline24208" src="War%20Story%20%20String%20'em%20Up_files/IMG249.GIF" width="20" height="6" align="BOTTOM">  2,000.''
+<a name="1595">&nbsp;</a>
+</p><p>
+Dimitris went back and implemented a hash table implementation for
+our dictionary.
+Again, it worked great up until the moment we ran it.
+</p><p>
+``Our program is still too slow,'' Dimitris complained.
+``Sure, it is now about ten times faster on strings of length 2,000.
+So now we can get up to about 4,000 characters.
+Big deal.
+We will never get up to 50,000.''
+</p><p>
+``We should have expected only a factor ten speedup,'' I mused.
+``After all,  <img alt="tex2html_wrap_inline24210" src="War%20Story%20%20String%20'em%20Up_files/IMG250.GIF" width="81" height="18" align="MIDDLE"> .
+We need a faster data structure to search in our dictionary of strings.''
+</p><p>
+``But what can be faster than a hash table?'' Dimitris countered.
+``To look up a <em>k</em>-character string, you must read all <em>k</em> characters.
+Our hash table already does <i>O</i>(<i>k</i>) searching.''
+</p><p>
+``Sure, it takes <em>k</em> comparisons to test the first substring.
+But maybe we can do better on the second test.
+Remember where our dictionary queries are coming from.
+When we concatenate <em>ABCD</em> with <em>EFGH</em>, we are first testing whether
+<em>BCDE</em> is in the dictionary, then <em>CDEF</em>.
+These strings differ from each other by only one character.
+We should be able to exploit this so that each subsequent test takes
+constant time to perform....''
+</p><p>
+``We can't do that with a hash table,'' Dimitris observed.
+``The second key is not going to be anywhere near the first in the table.
+A binary search tree won't help, either.
+Since the keys <em>ABCD</em> and <em>BCDE</em>
+differ according to the first character, the two strings will
+be in different parts of the tree.''
+</p><p>
+</p><p><a name="1890">&nbsp;</a> <img alt="figure1882" src="War%20Story%20%20String%20'em%20Up_files/IMG251.GIF" width="182" height="196" align="BOTTOM"> <br>
+<strong>Figure:</strong> Suffix tree on <em>ACAC</em> and <em>CACT</em>, with the pointer to the suffix of <em>ACAC</em> <a name="sbhtree">&nbsp;</a><br>
+</p><p>
+</p><p>
+``But we can use a suffix tree to do this,'' I countered.
+``A suffix tree is a trie containing all the suffixes of a given set of strings.
+For example, the suffixes of <em>ACAC</em> are  <img alt="tex2html_wrap_inline24214" src="War%20Story%20%20String%20'em%20Up_files/IMG252.GIF" width="121" height="20" align="MIDDLE"> .
+Coupled with suffixes of string <em>CACT</em>, we get the suffix tree of
+Figure <a href="https://www8.cs.umu.se/kurser/TDBA77/VT06/algorithms/BOOK/BOOK/NODE39.HTM#sbhtree"><img alt="gif" src="War%20Story%20%20String%20'em%20Up_files/CROSOTIF.GIF" align="BOTTOM"></a>.
+By following a pointer from <em>ACAC</em> to its longest proper suffix <em>CAC</em>,
+we get to the right place to test whether <em>CACT</em> is in our set of strings.
+One character comparison is all we need to do from there.''
+<a name="1617">&nbsp;</a>
+</p><p>
+Suffix trees are amazing data structures,
+discussed in considerably more detail in Section <a href="https://www8.cs.umu.se/kurser/TDBA77/VT06/algorithms/BOOK/BOOK3/NODE131.HTM#suffixtrees"><img alt="gif" src="War%20Story%20%20String%20'em%20Up_files/CROSOTIF.GIF" align="BOTTOM"></a>.
+Dimitris did some reading about them, then built a nice suffix tree
+implementation for our dictionary.
+Once again, it worked great up until the moment we ran it.
+</p><p>
+``Now our program is faster, but it runs out of memory,'' Dimitris complained.
+``And this on a 128 megabyte machine with 400 megabytes virtual memory!
+The suffix tree builds a path of length <em>k</em> for each suffix of length
+<em>k</em>, so all told there can be  <img alt="tex2html_wrap_inline24216" src="War%20Story%20%20String%20'em%20Up_files/IMG253.GIF" width="79" height="22" align="MIDDLE">  nodes in the tree.
+It crashes when we go beyond 2,000 characters.
+We will never get up to strings with 50,000 characters.''
+</p><p>
+I wasn't yet ready to give up.
+``There is a way around the space problem, by using compressed suffix trees,''
+I recalled.
+``Instead of explicitly representing long paths of character nodes,
+we can refer back
+to the original string.''
+Compressed suffix trees always take linear space, as
+described in Section <a href="https://www8.cs.umu.se/kurser/TDBA77/VT06/algorithms/BOOK/BOOK3/NODE131.HTM#suffixtrees"><img alt="gif" src="War%20Story%20%20String%20'em%20Up_files/CROSOTIF.GIF" align="BOTTOM"></a>.
+</p><p>
+Dimitris went back one last time and implemented the compressed suffix
+tree data structure.
+<em>Now</em> it worked great!
+As shown in Figure <a href="https://www8.cs.umu.se/kurser/TDBA77/VT06/algorithms/BOOK/BOOK/NODE39.HTM#suffixtreedata"><img alt="gif" src="War%20Story%20%20String%20'em%20Up_files/CROSOTIF.GIF" align="BOTTOM"></a>, we ran our simulation for strings
+of length
+<i>n</i>= 65,536 on a SPARCstation 20 without incident.
+Our results, reported in [<a href="https://www8.cs.umu.se/kurser/TDBA77/VT06/algorithms/BOOK/BOOK5/NODE232.HTM#MS95">MS95a</a>], showed that interactive SBH
+could be a very efficient sequencing technique.
+Based on these simulations, we were able to arouse interest in our
+technique from biologists.
+Making the actual wet laboratory experiments feasible provided another
+computational challenge, which is
+reported in Section <a href="https://www8.cs.umu.se/kurser/TDBA77/VT06/algorithms/BOOK/BOOK3/NODE99.HTM#warsimulatedannealing"><img alt="gif" src="War%20Story%20%20String%20'em%20Up_files/CROSOTIF.GIF" align="BOTTOM"></a>.
+</p><p>
+The take home lessons for programmers from Figure
+<a href="https://www8.cs.umu.se/kurser/TDBA77/VT06/algorithms/BOOK/BOOK/NODE39.HTM#suffixtreedata"><img alt="gif" src="War%20Story%20%20String%20'em%20Up_files/CROSOTIF.GIF" align="BOTTOM"></a> should be apparent.
+We isolated a single operation (dictionary string search) that was being
+performed repeatedly and optimized the data structure we used to
+support it.
+We started with a simple implementation (binary search trees) in the hopes
+that it would suffice, and then used profiling to reveal the trouble when it
+didn't.
+When an improved dictionary structure still did not suffice,
+we looked deeper into
+what kinds of queries we were performing, so that
+we could identify an even better
+data structure.
+Finally, we didn't give up until we had achieved the level of performance
+we needed.
+In algorithms, as in life, persistence usually pays off.
+</p><p>
+</p><p><a name="1742">&nbsp;</a> <img alt="figure1628" src="War%20Story%20%20String%20'em%20Up_files/IMG254.GIF" width="301" height="242" align="BOTTOM"> <br>
+<strong>Figure:</strong> Run times (in seconds) for the SBH simulation using various data structures
+<a name="suffixtreedata">&nbsp;</a><br>
+</p><p></p><hr><a name="tex2html3754" href="https://www8.cs.umu.se/kurser/TDBA77/VT06/algorithms/BOOK/BOOK/NODE40.HTM"><img alt="next" src="War%20Story%20%20String%20'em%20Up_files/NEXT_TIF.GIF" width="37" height="24" align="BOTTOM"></a> <a name="tex2html3752" href="https://www8.cs.umu.se/kurser/TDBA77/VT06/algorithms/BOOK/BOOK/NODE22.HTM"><img alt="up" src="War%20Story%20%20String%20'em%20Up_files/00000016.GIF" width="26" height="24" align="BOTTOM"></a> <a name="tex2html3746" href="https://www8.cs.umu.se/kurser/TDBA77/VT06/algorithms/BOOK/BOOK/NODE38.HTM"><img alt="previous" src="War%20Story%20%20String%20'em%20Up_files/PS_MOTIF.GIF" width="63" height="24" align="BOTTOM"></a> <a name="tex2html3756" href="https://www8.cs.umu.se/kurser/TDBA77/VT06/algorithms/BOOK/BOOK/NODE4.HTM"><img alt="contents" src="War%20Story%20%20String%20'em%20Up_files/CONTOTIF.GIF" width="65" height="24" align="BOTTOM"></a> <a name="tex2html3757" href="https://www8.cs.umu.se/kurser/TDBA77/VT06/algorithms/BOOK/BOOK5/NODE233.HTM"><img alt="index" src="War%20Story%20%20String%20'em%20Up_files/INDEOTIF.GIF" width="43" height="24" align="BOTTOM"></a> <a href="https://www8.cs.umu.se/kurser/TDBA77/VT06/algorithms/INDEX.HTM"><img alt="CD" src="War%20Story%20%20String%20'em%20Up_files/CDHOME08.GIF" align="BOTTOM"></a> <a href="https://www8.cs.umu.se/kurser/TDBA77/VT06/algorithms/LEC/LECTURES/ALL.HTM"><img alt="CD" src="War%20Story%20%20String%20'em%20Up_files/LECHOME5.GIF" align="BOTTOM"></a> <a href="https://www8.cs.umu.se/kurser/TDBA77/VT06/algorithms/WEBSITE/INDEX.HTM"><img alt="Algorithms" src="War%20Story%20%20String%20'em%20Up_files/ALGO0006.GIF" align="BOTTOM"></a> <br>
+<b> Next:</b> <a name="tex2html3755" href="https://www8.cs.umu.se/kurser/TDBA77/VT06/algorithms/BOOK/BOOK/NODE40.HTM">Exercises</a>
+<b>Up:</b> <a name="tex2html3753" href="https://www8.cs.umu.se/kurser/TDBA77/VT06/algorithms/BOOK/BOOK/NODE22.HTM">Data Structures and Sorting</a>
+<b> Previous:</b> <a name="tex2html3747" href="https://www8.cs.umu.se/kurser/TDBA77/VT06/algorithms/BOOK/BOOK/NODE38.HTM">War Story: Mystery of </a>
+<p></p><address>
+<i>Algorithms <br>
+Mon Jun  2 23:33:50 EDT 1997</i>
+</address>
+
+
+</body></html>
