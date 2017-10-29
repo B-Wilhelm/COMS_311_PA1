@@ -34,10 +34,12 @@ public class WarWithHash
 	public WarWithHash(String[] s, int k)
 	{
 		table = new Hashtable<String,String>(s.length);
+		this.s = s;
 		this.k = k;
 		
 		for(String value : s) {
 			table.put(value.substring(0, 1), value);
+			System.out.println(table.toString());
 		}
 	}
 	
