@@ -102,8 +102,21 @@ public class BinaryST
 	 */
 	public boolean search(String s)
 	{
-		// TODO
-		return false;
+		boolean found = false;
+		if(s.compareTo(this.data) > 0){
+			if(this.right != null)
+				found = this.right.search(s);
+			else
+				found = false;
+		}else if(s.compareTo(this.data) < 0){
+			if(this.left != null)
+				found = this.left.search(s);
+			else
+				found = false;
+		} else {
+			found = true;
+		}
+		return found;
 	}
 	
 	/**
