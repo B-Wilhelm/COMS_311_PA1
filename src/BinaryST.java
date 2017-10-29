@@ -148,6 +148,7 @@ public class BinaryST
 	 */
 	public int frequency(String s)
 	{
+		//TODO
 		String[] io = inOrder();
 		int count = 0;
 		
@@ -168,10 +169,52 @@ public class BinaryST
 	 * @param	s	The string that is to be removed from the Binary Search Tree
 	 * @return		Returns true if the string is found and removed; false otherwise
 	 */
-	public boolean remove(String s)
-	{
-		// TODO
-		return false;
+	public boolean remove(String s){		
+		if(!search(s))
+			return false;
+		else
+			return remove(s, this);
+    }
+	
+	/**
+	 * 
+	 * @param	s		The string that is to be removed from the Binary Search Tree
+	 * @param	root	The root of the Binary Search Tree
+	 * @return			Returns true if the string is found and removed; false otherwise
+	 */
+	public boolean remove(String s, BinaryST root) {
+		if (s.compareTo(this.data) < 0){
+	        if (left != null)
+	              return left.remove(s, this);
+	        else
+	              return false;
+	  }else if (s.compareTo(this.data) > 0){
+	        if (right != null)
+	              return right.remove(s, this);
+	        else
+	              return false;
+	  }else{
+	        if (left != null && right != null) {
+	        	this.data = right.min();
+				right.remove(this.data, this);
+	        } else if (root.left == this) {
+        		root.left = (left != null) ? left : right;
+	        } else if (root.right == this) {
+	        	root.right = (left != null) ? left : right;
+	        }
+	        return true;
+        }
+	}
+	
+	/**
+	 * 
+	 * @return			Returns the value on the left of a root; this will be the smallest element of a chain
+	 */
+	public String min() {
+		if (left == null)
+		      return data;
+		else
+		      return left.min();
 	}
 	
 	/**
@@ -181,30 +224,12 @@ public class BinaryST
 	public String[] inOrder()
 	{	
 		String[] currArray = {};
-		String[] tempArray;
-		String[] addedArray;
 		
-		if( this.left != null ){
-			addedArray = this.left.inOrder();
-			tempArray = new String[currArray.length + addedArray.length];
-			System.arraycopy(currArray, 0, tempArray, 0, currArray.length);
-			System.arraycopy(addedArray, 0, tempArray, currArray.length, addedArray.length);
-			currArray = tempArray;
-		}
-		
-		addedArray = new String[] {this.data};
-		tempArray = new String[currArray.length + addedArray.length];
-		System.arraycopy(currArray, 0, tempArray, 0, currArray.length);
-		System.arraycopy(addedArray, 0, tempArray, currArray.length, addedArray.length);
-		currArray = tempArray;
-		
-		if( this.right != null ){
-			addedArray = this.right.inOrder();
-			tempArray = new String[currArray.length + addedArray.length];
-			System.arraycopy(currArray, 0, tempArray, 0, currArray.length);
-			System.arraycopy(addedArray, 0, tempArray, currArray.length, addedArray.length);
-			currArray = tempArray;
-		}
+		if( this.left != null )
+			currArray = appendArray(currArray, this.left.inOrder());
+		currArray = appendArray(currArray, new String[] {this.data});
+		if( this.right != null )
+			currArray = appendArray(currArray, this.right.inOrder());
 		
 		return currArray;
 	}
@@ -212,36 +237,27 @@ public class BinaryST
 	/**
 	 * 
 	 * @return		Array of strings obtained from a pre-order traversal of the Binary Search Tree
-	 */
+	 */	
 	public String[] preOrder()
 	{
 		String[] currArray = {};
-		String[] tempArray;
-		String[] addedArray;
 		
-		addedArray = new String[] {this.data};
+		currArray = appendArray(currArray, new String[] {this.data});
+		if( this.left != null )
+			currArray = appendArray(currArray, this.left.preOrder());
+		if( this.right != null )
+			currArray = appendArray(currArray, this.right.preOrder());
+		
+		return currArray;
+	}
+	
+	public String[] appendArray(String[] currArray, String[] addedArray) {
+		String[] tempArray;
+		
 		tempArray = new String[currArray.length + addedArray.length];
 		System.arraycopy(currArray, 0, tempArray, 0, currArray.length);
 		System.arraycopy(addedArray, 0, tempArray, currArray.length, addedArray.length);
-		currArray = tempArray;
-		
-		if( this.left != null ){
-			addedArray = this.left.preOrder();
-			tempArray = new String[currArray.length + addedArray.length];
-			System.arraycopy(currArray, 0, tempArray, 0, currArray.length);
-			System.arraycopy(addedArray, 0, tempArray, currArray.length, addedArray.length);
-			currArray = tempArray;
-		}
-		
-		if( this.right != null ){
-			addedArray = this.right.preOrder();
-			tempArray = new String[currArray.length + addedArray.length];
-			System.arraycopy(currArray, 0, tempArray, 0, currArray.length);
-			System.arraycopy(addedArray, 0, tempArray, currArray.length, addedArray.length);
-			currArray = tempArray;
-		}
-		
-		return currArray;
+		return tempArray;
 	}
 	
 	/**
