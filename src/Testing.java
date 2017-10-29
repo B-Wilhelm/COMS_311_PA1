@@ -31,6 +31,14 @@ public class Testing {
 		tree.remove("E");
 		io = tree.inOrder();
 		printArray(io);
+		System.out.println();
+		System.out.println(tree.frequency("A"));
+		System.out.println(tree.frequency("B"));
+		System.out.println(tree.frequency("C"));
+		System.out.println(tree.frequency("D"));
+		System.out.println(tree.frequency("E"));
+		System.out.println(tree.frequency("F"));
+		System.out.println(tree.frequency("G"));
 	}
 	
 	public static void printArray(String[] s) {

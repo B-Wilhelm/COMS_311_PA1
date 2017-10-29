@@ -148,19 +148,18 @@ public class BinaryST
 	 */
 	public int frequency(String s)
 	{
-		//TODO
-		String[] io = inOrder();
 		int count = 0;
-		
-		if(this.data != null)
-			count = 1;
-		
-		for(int i = 1; i < io.length; i++){
-			if(io[i].compareTo(io[i-1]) != 0) {
-				count++;
-			}
+		if(s.compareTo(this.data) > 0){
+			if(this.right != null)
+				count += this.right.frequency(s);
+		}else if(s.compareTo(this.data) < 0){
+			if(this.left != null)
+				count += this.left.frequency(s);
+		} else {
+			count ++;
+			if(this.right != null)
+				count += this.right.frequency(s);
 		}
-		
 		return count;
 	}
 	
