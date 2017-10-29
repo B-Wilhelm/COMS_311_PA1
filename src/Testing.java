@@ -5,6 +5,7 @@ public class Testing {
 		BinaryST tree = new BinaryST(new String[] {"D", "B", "A", "C", "B", "C", "F", "E", "E", "B", "F"});
 		BinaryST tree2 = new BinaryST(new String[] {});
 		BinaryST tree3 = new BinaryST(new String[] {"B", "B", "B", "B", "B"});
+		BinaryST tree4 = new BinaryST(new String[] {"D", "B", "A", "C", "E", "F"});
 		String[] io = tree.inOrder();
 		String[] po = tree.preOrder();
 		printArray(io);
@@ -16,9 +17,17 @@ public class Testing {
 		System.out.println(tree.search("E"));
 		System.out.println(tree.search("F"));
 		System.out.println(tree.search("G"));
-		System.out.println(tree3.distinctSize());
-		System.out.println(tree3.size());
-		System.out.println(tree3.height());
+		System.out.println(tree.distinctSize());
+		System.out.println(tree.size());
+		System.out.println(tree.height());
+		System.out.println();
+		System.out.println(tree.rankOf("A"));
+		System.out.println(tree.rankOf("B"));
+		System.out.println(tree.rankOf("C"));
+		System.out.println(tree.rankOf("D"));
+		System.out.println(tree.rankOf("E"));
+		System.out.println(tree.rankOf("F"));
+		System.out.println(tree.rankOf("G"));
 	}
 	
 	public static void printArray(String[] s) {

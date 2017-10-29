@@ -47,14 +47,14 @@ public class BinaryST
 	 */
 	public int distinctSize()
 	{
-		String[] s = inOrder();
+		String[] io = inOrder();
 		int count = 0;
 		
 		if(this.data != null)
 			count = 1;
 		
-		for(int i = 1; i < s.length; i++){
-			if(s[i].compareTo(s[i-1]) != 0) {
+		for(int i = 1; i < io.length; i++){
+			if(io[i].compareTo(io[i-1]) != 0) {
 				count++;
 			}
 		}
@@ -106,17 +106,17 @@ public class BinaryST
 		if(this.data == null) {
 			this.data = s;
 		}else {
-			if (s.compareTo(this.data) > 0){
-				if (this.right != null)
-						this.right.add(s);
-				else
-					this.right = new BinaryST(new String[]{s});
-	
-			}else{
+			if (s.compareTo(this.data) < 0){
 				if (this.left != null)
-					this.left.add(s);
+						this.left.add(s);
 				else
 					this.left = new BinaryST(new String[]{s});
+	
+			}else{
+				if (this.right != null)
+					this.right.add(s);
+				else
+					this.right = new BinaryST(new String[]{s});
 			}
 		}
 	}
@@ -148,8 +148,19 @@ public class BinaryST
 	 */
 	public int frequency(String s)
 	{
-		// TODO
-		return 0;
+		String[] io = inOrder();
+		int count = 0;
+		
+		if(this.data != null)
+			count = 1;
+		
+		for(int i = 1; i < io.length; i++){
+			if(io[i].compareTo(io[i-1]) != 0) {
+				count++;
+			}
+		}
+		
+		return count;
 	}
 	
 	/**
@@ -240,7 +251,25 @@ public class BinaryST
 	 */
 	public int rankOf(String s)
 	{
-		// TODO
-		return 0;
+		int rank = 0;
+		
+		if(!search(s))
+			return 0;
+		
+		if(s.compareTo(this.data) > 0){
+			if(this.right != null) {
+				rank = this.right.rankOf(s) + 1;
+				if(this.left != null)
+					rank += this.left.size();
+			}
+		}else if(s.compareTo(this.data) < 0){
+			if(this.left != null)
+				rank = this.left.rankOf(s);
+		} else {
+			if(this.left != null)
+				rank = this.left.size();
+		}
+		
+		return rank;
 	}
 }
