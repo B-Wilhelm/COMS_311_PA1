@@ -17,12 +17,18 @@
 public class BinaryST
 {
 	
+	private String data;
+	private BinaryST right; 
+	private BinaryST left;
 	/**
 	 * 
 	 */
 	public BinaryST()
 	{
 		// Creates Empty BST
+		this.data = null;
+		this.right = null;
+		this.left = null;
 	}
 	
 	/**
@@ -70,7 +76,18 @@ public class BinaryST
 	 */
 	public void add(String s)
 	{
-		// TODO
+		if (s.compareTo(this.data) > 0){
+			if (this.right != null)
+					this.right.add(s);
+			else
+				this.left = new BinaryST(new String[]{s});
+
+		}else{
+			if (this.left != null)
+				this.left.add(s);
+			else
+				this.left = new BinaryST(new String[]{s});
+		}
 	}
 	
 	/**
