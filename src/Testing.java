@@ -2,8 +2,9 @@
 public class Testing {
 
 	public static void main(String[] args) {
-		BinaryST tree = new BinaryST(new String[] {"D", "B", "A", "C", "F", "E"});
+		BinaryST tree = new BinaryST(new String[] {"D", "B", "A", "C", "B", "C", "F", "E", "E", "B", "F"});
 		BinaryST tree2 = new BinaryST(new String[] {});
+		BinaryST tree3 = new BinaryST(new String[] {"B", "B", "B", "B", "B"});
 		String[] io = tree.inOrder();
 		String[] po = tree.preOrder();
 		printArray(io);
@@ -15,8 +16,9 @@ public class Testing {
 		System.out.println(tree.search("E"));
 		System.out.println(tree.search("F"));
 		System.out.println(tree.search("G"));
-		System.out.println(tree.size());
-		System.out.println(tree.height());
+		System.out.println(tree3.distinctSize());
+		System.out.println(tree3.size());
+		System.out.println(tree3.height());
 	}
 	
 	public static void printArray(String[] s) {

@@ -47,8 +47,19 @@ public class BinaryST
 	 */
 	public int distinctSize()
 	{
-		// TODO
-		return 0;
+		String[] s = inOrder();
+		int count = 0;
+		
+		if(this.data != null)
+			count = 1;
+		
+		for(int i = 1; i < s.length; i++){
+			if(s[i].compareTo(s[i-1]) != 0) {
+				count++;
+			}
+		}
+		
+		return count;
 	}
 	
 	/**
