@@ -15,9 +15,9 @@
 
 import java.util.ArrayList;
 
-
 public class WarWithBST
 {
+	
 	
 	/**
 	 * creates an object that stores an input string-array (into a BST) of DNA sequences for later computation

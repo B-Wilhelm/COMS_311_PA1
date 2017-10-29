@@ -14,10 +14,12 @@
 */
 
 import java.util.ArrayList;
+import java.util.Hashtable;
 
 
 public class WarWithHash
 {
+	private int k;
 	
 	/**
 	 * creates an object that stores an input string-array (into a Hash) of DNA sequences for later computation
@@ -26,7 +28,8 @@ public class WarWithHash
 	 */
 	public WarWithHash(String[] s, int k)
 	{
-		// TODO
+		Hashtable<String,Integer> h = new Hashtable<String,Integer>(s.length);
+		this.k = k;
 	}
 	
 	/**

@@ -14,13 +14,15 @@
 */
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 
 public class WarWithArray
 {
-	String[] s;
-	int k;
-	ArrayList<String> c;
+	private String[] s;
+	private int k;
+	private ArrayList<String> c;
+	private String temp;
 	
 	/**
 	 * creates an object that stores an input string-array (into an array) of DNA sequences for later computation
@@ -39,14 +41,27 @@ public class WarWithArray
 	 */
 	public ArrayList<String> compute2k()
 	{
+		temp = "";
 		c = new ArrayList<String>();
 		
 		for(int i = 0; i < s.length; i++) {
 			for(int j = 0; j < s.length; j++) {
-				c.add(s[i]+s[j]);
+				temp = s[i]+s[j];
+				if(validCheck(temp)) {
+					c.add(temp);
+				}
 			}
 		}
 		
 		return c;
+	}
+	
+	private boolean validCheck(String t) {
+		for(int i = 0; i < t.length()-k; i++) {
+			if(!Arrays.asList(s).contains(t.substring(i,i+k))) {
+				return false;
+			}
+		}
+		return true;
 	}
 }
