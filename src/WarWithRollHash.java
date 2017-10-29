@@ -21,8 +21,8 @@ public class WarWithRollHash
 	
 	/**
 	 * creates an object that stores an input string-array (into a Rolling Hash) of DNA sequences for later computation
-	 * @param	s	The set of substrings of the DNA sequence
-	 * @param	k	The length of substrings of the DNA sequence
+	 * @param	s	The set of substrings (length k) of the DNA sequence
+	 * @param	k	The length of substrings (in s) of the DNA sequence
 	 */
 	public WarWithRollHash(String[] s, int k)
 	{
