@@ -3,6 +3,7 @@ public class Testing {
 
 	public static void main(String[] args) {
 		BinaryST tree = new BinaryST(new String[] {"D", "B", "A", "C", "F", "E"});
+		BinaryST tree2 = new BinaryST(new String[] {});
 		String[] io = tree.inOrder();
 		String[] po = tree.preOrder();
 		printArray(io);
@@ -15,6 +16,7 @@ public class Testing {
 		System.out.println(tree.search("F"));
 		System.out.println(tree.search("G"));
 		System.out.println(tree.size());
+		System.out.println(tree.height());
 	}
 	
 	public static void printArray(String[] s) {
