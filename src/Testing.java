@@ -14,6 +14,7 @@ public class Testing {
 		System.out.println(tree.search("E"));
 		System.out.println(tree.search("F"));
 		System.out.println(tree.search("G"));
+		System.out.println(tree.size());
 	}
 	
 	public static void printArray(String[] s) {
