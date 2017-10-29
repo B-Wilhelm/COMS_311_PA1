@@ -129,8 +129,30 @@ public class BinaryST
 	 */
 	public String[] inOrder()
 	{
-		// TODO
-		return null;
+		if(this.left == null && this.right == null) {
+			return null;
+		}
+		
+		String[] wholeArray = {};
+		String[] addedArray;
+		
+		if( this.left != null ) {
+			addedArray = this.left.inOrder();
+			System.arraycopy(wholeArray, 0, addedArray, 0, wholeArray.length);
+			wholeArray = addedArray;
+		}
+		
+		addedArray = new String[] {this.data};
+		System.arraycopy(wholeArray, 0, wholeArray, 0, wholeArray.length);
+		wholeArray = addedArray;
+		
+		if( this.right != null ) {
+			addedArray = this.right.inOrder();
+			System.arraycopy(wholeArray, 0, addedArray, 0, wholeArray.length);
+			wholeArray = addedArray;
+		}
+		
+		return wholeArray;
 	}
 	
 	/**
