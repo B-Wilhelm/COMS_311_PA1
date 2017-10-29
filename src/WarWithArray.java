@@ -18,6 +18,9 @@ import java.util.ArrayList;
 
 public class WarWithArray
 {
+	String[] s;
+	int k;
+	ArrayList<String> c;
 	
 	/**
 	 * creates an object that stores an input string-array (into an array) of DNA sequences for later computation
@@ -26,7 +29,8 @@ public class WarWithArray
 	 */
 	public WarWithArray(String[] s, int k)
 	{
-		// TODO
+		this.s = s;
+		this.k = k;
 	}
 	
 	/**
@@ -35,8 +39,14 @@ public class WarWithArray
 	 */
 	public ArrayList<String> compute2k()
 	{
-		// TODO
-		return null;
+		c = new ArrayList<String>();
+		
+		for(int i = 0; i < s.length; i++) {
+			for(int j = 0; j < s.length; j++) {
+				c.add(s[i]+s[j]);
+			}
+		}
+		
+		return c;
 	}
 }
-
