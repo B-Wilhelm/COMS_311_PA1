@@ -38,8 +38,7 @@ public class WarWithHash
 		this.k = k;
 		
 		for(String value : s) {
-			table.put(value.substring(0, 1), value);
-			System.out.println(table.toString());
+			table.put(value, value);
 		}
 	}
 	
