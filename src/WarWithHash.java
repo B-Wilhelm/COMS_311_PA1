@@ -20,7 +20,7 @@ public class WarWithHash
 {
 	
 	/**
-	 * 
+	 * creates an object that stores an input string-array (into a Hash) of DNA sequences for later computation
 	 * @param	s	The set of substrings of the DNA sequence
 	 * @param	k	The length of substrings of the DNA sequence
 	 */
@@ -30,7 +30,7 @@ public class WarWithHash
 	}
 	
 	/**
-	 * 
+	 * Computes DNA sequences with length 2*k
 	 * @return		The ArrayList of all substrings of the DNA sequence with length 2*k
 	 */
 	public ArrayList<String> compute2k()
