@@ -37,7 +37,8 @@ public class BinaryST
 	 */
 	public BinaryST(String[] s)
 	{
-		// TODO
+		for(int i = 0; i < s.length; i++)
+			add(s[i]);
 	}
 	
 	/**
@@ -76,17 +77,21 @@ public class BinaryST
 	 */
 	public void add(String s)
 	{
-		if (s.compareTo(this.data) > 0){
-			if (this.right != null)
-					this.right.add(s);
-			else
-				this.left = new BinaryST(new String[]{s});
-
-		}else{
-			if (this.left != null)
-				this.left.add(s);
-			else
-				this.left = new BinaryST(new String[]{s});
+		if(this.data == null) {
+			this.data = s;
+		}else {
+			if (s.compareTo(this.data) > 0){
+				if (this.right != null)
+						this.right.add(s);
+				else
+					this.right = new BinaryST(new String[]{s});
+	
+			}else{
+				if (this.left != null)
+					this.left.add(s);
+				else
+					this.left = new BinaryST(new String[]{s});
+			}
 		}
 	}
 	
@@ -128,31 +133,34 @@ public class BinaryST
 	 * @return		Array of strings obtained from an in-order traversal of the Binary Search Tree
 	 */
 	public String[] inOrder()
-	{
-		if(this.left == null && this.right == null) {
-			return null;
-		}
-		
-		String[] wholeArray = {};
+	{	
+		String[] currArray = {};
+		String[] tempArray;
 		String[] addedArray;
 		
 		if( this.left != null ) {
 			addedArray = this.left.inOrder();
-			System.arraycopy(wholeArray, 0, addedArray, 0, wholeArray.length);
-			wholeArray = addedArray;
+			tempArray = new String[currArray.length + addedArray.length];
+			System.arraycopy(currArray, 0, tempArray, 0, currArray.length);
+			System.arraycopy(addedArray, 0, tempArray, currArray.length, addedArray.length);
+			currArray = tempArray;
 		}
 		
 		addedArray = new String[] {this.data};
-		System.arraycopy(wholeArray, 0, wholeArray, 0, wholeArray.length);
-		wholeArray = addedArray;
+		tempArray = new String[currArray.length + addedArray.length];
+		System.arraycopy(currArray, 0, tempArray, 0, currArray.length);
+		System.arraycopy(addedArray, 0, tempArray, currArray.length, addedArray.length);
+		currArray = tempArray;
 		
 		if( this.right != null ) {
 			addedArray = this.right.inOrder();
-			System.arraycopy(wholeArray, 0, addedArray, 0, wholeArray.length);
-			wholeArray = addedArray;
+			tempArray = new String[currArray.length + addedArray.length];
+			System.arraycopy(currArray, 0, tempArray, 0, currArray.length);
+			System.arraycopy(addedArray, 0, tempArray, currArray.length, addedArray.length);
+			currArray = tempArray;
 		}
 		
-		return wholeArray;
+		return currArray;
 	}
 	
 	/**
