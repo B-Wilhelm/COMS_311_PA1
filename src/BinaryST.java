@@ -57,8 +57,13 @@ public class BinaryST
 	 */
 	public int size()
 	{
-		// TODO
-		return 0;
+		int size = 1;
+		
+		if(this.right != null) 
+				size += this.right.size();
+		if(this.left != null);
+				size += this.left.size();
+		return size;
 	}
 	
 	/**
@@ -106,13 +111,9 @@ public class BinaryST
 		if(s.compareTo(this.data) > 0){
 			if(this.right != null)
 				found = this.right.search(s);
-			else
-				found = false;
 		}else if(s.compareTo(this.data) < 0){
 			if(this.left != null)
 				found = this.left.search(s);
-			else
-				found = false;
 		} else {
 			found = true;
 		}
