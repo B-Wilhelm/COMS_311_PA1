@@ -57,11 +57,13 @@ public class BinaryST
 	 */
 	public int size()
 	{
-		int size = 1;
+		int size = 0;
+		if(this.data != null)
+			size = 1;
 		
 		if(this.right != null) 
 				size += this.right.size();
-		if(this.left != null);
+		if(this.left != null)
 				size += this.left.size();
 		return size;
 	}
@@ -72,8 +74,16 @@ public class BinaryST
 	 */
 	public int height()
 	{
-		// TODO
-		return 0;
+		int left = 0,right = 0;
+		if(this.data != null){
+			left = 1; right = 1;
+		}
+		
+		if(this.right != null) 
+				right += this.right.height();
+		if(this.left != null)
+				left += this.left.height();
+		return Math.max(right, left);
 	}
 	
 	/**
