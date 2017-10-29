@@ -17,6 +17,9 @@
 public class BinaryST
 {
 	
+	/**
+	 * 
+	 */
 	public BinaryST()
 	{
 		// Creates Empty BST
