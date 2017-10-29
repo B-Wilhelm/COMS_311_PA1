@@ -13,13 +13,12 @@
 	(i.e., you may include java.util.ArrayList etc. here, but not junit, apache commons, google guava, etc.)
 */
 
-
 public class BinaryST
 {
-	
 	private String data;
 	private BinaryST right; 
 	private BinaryST left;
+	
 	/**
 	 * 
 	 */

@@ -17,7 +17,11 @@ import java.util.ArrayList;
 
 public class WarWithBST
 {
-	
+	private String[] s;
+	private int k;
+	private ArrayList<String> c;
+	private String temp;
+	private BinaryST bst;
 	
 	/**
 	 * creates an object that stores an input string-array (into a BST) of DNA sequences for later computation
@@ -26,7 +30,10 @@ public class WarWithBST
 	 */
 	public WarWithBST(String[] s, int k)
 	{
-		// TODO
+		this.s = s;
+		this.k = k;
+		
+		bst = new BinaryST(s);
 	}
 	
 	/**
@@ -35,8 +42,28 @@ public class WarWithBST
 	 */
 	public ArrayList<String> compute2k()
 	{
-		// TODO
-		return null;
+		temp = "";
+		c = new ArrayList<String>();
+		
+		for(int i = 0; i < s.length; i++) {
+			for(int j = 0; j < s.length; j++) {
+				temp = s[i]+s[j];
+				if(validCheck(temp)) {
+					c.add(temp);
+				}
+			}
+		}
+		
+		return c;
+	}
+	
+	private boolean validCheck(String t) {
+		for(int i = 0; i < t.length()-k; i++) {
+			if(!bst.search(t.substring(i,i+k))) {
+				return false;
+			}
+		}
+		return true;
 	}
 }
 
