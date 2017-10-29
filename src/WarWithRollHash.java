@@ -14,10 +14,14 @@
 */
 
 import java.util.ArrayList;
+import java.util.Hashtable;
 
 
 public class WarWithRollHash
 {
+	private String[] s;
+	private int k;
+	private Hashtable<String,String> table;
 	
 	/**
 	 * creates an object that stores an input string-array (into a Rolling Hash) of DNA sequences for later computation
@@ -26,7 +30,13 @@ public class WarWithRollHash
 	 */
 	public WarWithRollHash(String[] s, int k)
 	{
-		// TODO
+		table = new Hashtable<String,String>(s.length);
+		this.s = s;
+		this.k = k;
+		
+		for(String value : s) {
+			table.put(value, value);
+		}
 	}
 	
 	/**
