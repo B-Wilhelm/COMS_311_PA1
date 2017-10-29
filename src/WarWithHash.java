@@ -14,12 +14,17 @@
 */
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Hashtable;
 
 
 public class WarWithHash
 {
+	private String[] s;
 	private int k;
+	private ArrayList<String> c;
+	private String temp;
+	private Hashtable<String,String> table;
 	
 	/**
 	 * creates an object that stores an input string-array (into a Hash) of DNA sequences for later computation
@@ -28,8 +33,12 @@ public class WarWithHash
 	 */
 	public WarWithHash(String[] s, int k)
 	{
-		Hashtable<String,Integer> h = new Hashtable<String,Integer>(s.length);
+		table = new Hashtable<String,String>(s.length);
 		this.k = k;
+		
+		for(String value : s) {
+			table.put(value.substring(0, 1), value);
+		}
 	}
 	
 	/**
@@ -38,8 +47,28 @@ public class WarWithHash
 	 */
 	public ArrayList<String> compute2k()
 	{
-		// TODO
-		return null;
+		temp = "";
+		c = new ArrayList<String>();
+		
+		for(int i = 0; i < s.length; i++) {
+			for(int j = 0; j < s.length; j++) {
+				temp = s[i]+s[j];
+				if(validCheck(temp)) {
+					c.add(temp);
+				}
+			}
+		}
+		
+		return c;
+	}
+	
+	private boolean validCheck(String t) {
+		for(int i = 0; i < t.length()-k; i++) {
+			if(!table.contains(t.substring(i,i+k))) {
+				return false;
+			}
+		}
+		return true;
 	}
 }
 
