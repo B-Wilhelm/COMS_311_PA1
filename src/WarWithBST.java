@@ -20,9 +20,9 @@ public class WarWithBST
 {
 	
 	/**
-	 * 
-	 * @param	s	The set of substrings of the DNA sequence
-	 * @param	k	The length of substrings of the DNA sequence
+	 * creates an object that stores an input string-array (into a BST) of DNA sequences for later computation
+	 * @param	s	The set of substrings (length k) of the DNA sequence
+	 * @param	k	The length of substrings (in s) of the DNA sequence
 	 */
 	public WarWithBST(String[] s, int k)
 	{
@@ -30,7 +30,7 @@ public class WarWithBST
 	}
 	
 	/**
-	 * 
+	 * Computes DNA sequences with length 2*k
 	 * @return		The ArrayList of all substrings of the DNA sequence with length 2*k
 	 */
 	public ArrayList<String> compute2k()
