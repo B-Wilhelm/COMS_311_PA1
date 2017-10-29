@@ -138,7 +138,7 @@ public class BinaryST
 		String[] tempArray;
 		String[] addedArray;
 		
-		if( this.left != null ) {
+		if( this.left != null ){
 			addedArray = this.left.inOrder();
 			tempArray = new String[currArray.length + addedArray.length];
 			System.arraycopy(currArray, 0, tempArray, 0, currArray.length);
@@ -152,7 +152,7 @@ public class BinaryST
 		System.arraycopy(addedArray, 0, tempArray, currArray.length, addedArray.length);
 		currArray = tempArray;
 		
-		if( this.right != null ) {
+		if( this.right != null ){
 			addedArray = this.right.inOrder();
 			tempArray = new String[currArray.length + addedArray.length];
 			System.arraycopy(currArray, 0, tempArray, 0, currArray.length);
@@ -169,8 +169,33 @@ public class BinaryST
 	 */
 	public String[] preOrder()
 	{
-		// TODO
-		return null;
+		String[] currArray = {};
+		String[] tempArray;
+		String[] addedArray;
+		
+		addedArray = new String[] {this.data};
+		tempArray = new String[currArray.length + addedArray.length];
+		System.arraycopy(currArray, 0, tempArray, 0, currArray.length);
+		System.arraycopy(addedArray, 0, tempArray, currArray.length, addedArray.length);
+		currArray = tempArray;
+		
+		if( this.left != null ){
+			addedArray = this.left.preOrder();
+			tempArray = new String[currArray.length + addedArray.length];
+			System.arraycopy(currArray, 0, tempArray, 0, currArray.length);
+			System.arraycopy(addedArray, 0, tempArray, currArray.length, addedArray.length);
+			currArray = tempArray;
+		}
+		
+		if( this.right != null ){
+			addedArray = this.right.preOrder();
+			tempArray = new String[currArray.length + addedArray.length];
+			System.arraycopy(currArray, 0, tempArray, 0, currArray.length);
+			System.arraycopy(addedArray, 0, tempArray, currArray.length, addedArray.length);
+			currArray = tempArray;
+		}
+		
+		return currArray;
 	}
 	
 	/**
