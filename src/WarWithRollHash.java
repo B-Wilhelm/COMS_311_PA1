@@ -34,10 +34,6 @@ public class WarWithRollHash
 	{
 		this.s = s;
 		this.k = k;
-		
-		for(String value : s) {
-			
-		}
 	}
 	
 	/**
@@ -52,8 +48,10 @@ public class WarWithRollHash
 		for(int i = 0; i < s.length; i++) {
 			for(int j = 0; j < s.length; j++) {
 				temp = s[i]+s[j];
-				if(validCheck(temp)) {
-					c.add(temp);
+				for(int k = 0; k < s.length; k++) {
+					if(validCheck(s[k], temp)) {
+						c.add(temp);
+					}
 				}
 			}
 		}
@@ -61,12 +59,10 @@ public class WarWithRollHash
 		return c;
 	}
 	
-	private boolean validCheck(String t) {
-		return false;
-	}
-	
-	private boolean search(String pattern, String text, int primeNum) {
+	private boolean validCheck(String pattern, String text) {
 		int i, j;
+		int patternCount = 0;
+		int primeNum = 101;
 		int p = 0;	// Hash value for pattern
 		int t = 0;	// Hash value for text
 		int h = 1;
@@ -86,11 +82,15 @@ public class WarWithRollHash
 						break;
 				}
 				
-				if(j == pattern.length())
-					System.out.println("Pattern found at index: " + i);
+				if(j == pattern.length()) {
+					patternCount++;
+				}
 			}
+			
+			if(i < (text.length()-pattern.length()))
+				t = (NUM_LETTERS_ALPHABET*(t - text.charAt(i)*h) + text.charAt(i + pattern.length())) % primeNum;
 		}
 		
-		return false;
+		return (patternCount > 0);
 	}
 }
