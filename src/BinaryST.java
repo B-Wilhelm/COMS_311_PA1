@@ -249,6 +249,9 @@ public class BinaryST
 		return currArray;
 	}
 	
+	/**
+	 * Helper function for preOrder and inOrder array appending
+	 */
 	public String[] appendArray(String[] currArray, String[] addedArray) {
 		String[] tempArray;
 		
@@ -259,7 +262,7 @@ public class BinaryST
 	}
 	
 	/**
-	 * 
+	 * Returns number of strings that are smaller than s
 	 * @param	s	The string that is to be ranked
 	 * @return		The numeric rank of (number of strings smaller than) the string
 	 */
