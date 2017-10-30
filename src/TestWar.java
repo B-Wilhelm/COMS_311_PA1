@@ -28,13 +28,13 @@ public class TestWar {
 		results = wh.compute2k().toString();
 //		System.out.println(results);
 		time= (System.nanoTime() - start);
-		System.out.println("Time elapsed: " + time + "ns");
+		System.out.println("Time elapsed: " + time + "ns\n");
 		
 		WarWithRollHash wr = new WarWithRollHash(arr, arr[0].length());
 		start = System.nanoTime();
 		System.out.println("Rolling Hash:");
 		results = wr.compute2k().toString();
-//		System.out.println(results);
+		System.out.println(results);
 		time= (System.nanoTime() - start);
 		System.out.println("Time elapsed: " + time + "ns");
 	}

@@ -36,7 +36,7 @@ public class WarWithRollHash
 		this.k = k;
 		
 		for(String value : s) {
-			table.put(value, value);
+			
 		}
 	}
 	
@@ -86,7 +86,7 @@ public class WarWithRollHash
 					if(text.charAt(i+j) != pattern.charAt(j))	break;
 				}
 				
-				if(j == pattern.length())	System.out.println("Pattern found at index " + i);
+				if(j == pattern.length())	System.out.println("Pattern found at index: " + i);
 			}
 		}
 		
