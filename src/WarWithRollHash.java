@@ -14,6 +14,10 @@
 */
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
 
 public class WarWithRollHash
 {
@@ -21,7 +25,8 @@ public class WarWithRollHash
 	private int k;
 	private ArrayList<String> c;
 	private String temp;
-	private final static int NUM_LETTERS_ALPHABET = 26;
+	private final Map<String, Integer> map = new HashMap<>();
+	private int A_SIZE_POW_9;
 	
 	/**
 	 * creates an object that stores an input string-array (into a Rolling Hash) of DNA sequences for later computation
@@ -32,76 +37,41 @@ public class WarWithRollHash
 	{
 		this.s = s;
 		this.k = k;
+		
+		for(String value : s)
+			map.put(value, 0);
+		
+		A_SIZE_POW_9 = (int) Math.pow(map.size(), 9);
 	}
 	
 	/**
 	 * Computes DNA sequences with length 2*k
 	 * @return		The ArrayList of all substrings of the DNA sequence with length 2*k
 	 */
-	public ArrayList<String> compute2k()
-	{
+	public ArrayList<String> compute2k() {
 		temp = "";
 		c = new ArrayList<String>();
 		
 		for(int i = 0; i < s.length; i++) {
 			for(int j = 0; j < s.length; j++) {
 				temp = s[i]+s[j];
-				if(validCheck(temp))
-					c.add(temp);
+				c.addAll(validCheck(temp));
 			}
 		}
 		
 		return c;
 	}
 	
-	private boolean validCheck(String text) {
-		
-		String pattern;
-		int i, j;
-		int patternCount = 0;
-		int primeNum;
-		int p;	// Hash value for pattern
-		int t;	// Hash value for text
-		int h;
-		
-		if(text.length() < 1) {
-			return false;
-		}
-		
-		for(int l = 0; l < s.length; l++) {
-			pattern = s[l];
-			primeNum = 101;
-			p = 0;
-			t = 0;
-			h = 1;
-			
-			for (i = 0; i < pattern.length()-1; i++)
-				h = (h*NUM_LETTERS_ALPHABET) % primeNum;
-			
-			for(i = 0; i < pattern.length(); i++) {
-				p = (p*NUM_LETTERS_ALPHABET + pattern.charAt(i)) % primeNum;
-				t = (t*NUM_LETTERS_ALPHABET + text.charAt(i)) % primeNum;
-			}
-			
-			for(i = 0; i <= (text.length()-pattern.length()); i++) {
-				if(p == t) {
-					for(j = 0; j < pattern.length(); j++) {
-						if(text.charAt(i+j) != pattern.charAt(j))
-							break;
-					}
-					
-					if(j == pattern.length()) {
-						patternCount++;
-					}
-				}
-				
-				if(i < (text.length()-pattern.length())) {
-					t = (NUM_LETTERS_ALPHABET*(t - text.charAt(i)*h) + text.charAt(i + pattern.length())) % primeNum;
-					if(t < 0)
-						t += primeNum;
-				}
-			}
-		}
-		return (patternCount == k+1);
+	private ArrayList<String> validCheck(String s) {	    
+		Set<String> set = new HashSet<>();
+        Set<Integer> hashes = new HashSet<>();
+        c = new ArrayList<String>();
+        
+        for (int i = 0, rhash = 0; i < s.length(); i++) {
+            if (i > 9) rhash -= A_SIZE_POW_9 * map.get(s.charAt(i-10));
+            rhash = map.size() * rhash + map.get(s.charAt(i));
+            if (i > 8 && !hashes.add(rhash)) c.add(s.substring(i-9,i+1));
+        }
+        return c;
 	}
 }
