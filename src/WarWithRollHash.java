@@ -21,7 +21,9 @@ public class WarWithRollHash
 {
 	private String[] s;
 	private int k;
-	private Hashtable<String,String> table;
+	private ArrayList<String> c;
+	private String temp;
+	private final static int NUM_LETTERS_ALPHABET = 26;
 	
 	/**
 	 * creates an object that stores an input string-array (into a Rolling Hash) of DNA sequences for later computation
@@ -30,7 +32,6 @@ public class WarWithRollHash
 	 */
 	public WarWithRollHash(String[] s, int k)
 	{
-		table = new Hashtable<String,String>(s.length);
 		this.s = s;
 		this.k = k;
 		
@@ -45,7 +46,50 @@ public class WarWithRollHash
 	 */
 	public ArrayList<String> compute2k()
 	{
-		// TODO
-		return null;
+		temp = "";
+		c = new ArrayList<String>();
+		
+		for(int i = 0; i < s.length; i++) {
+			for(int j = 0; j < s.length; j++) {
+				temp = s[i]+s[j];
+				if(validCheck(temp)) {
+					c.add(temp);
+				}
+			}
+		}
+		
+		return c;
+	}
+	
+	private boolean validCheck(String t) {
+		return false;
+	}
+	
+	private boolean search(String pattern, String text, int primeNum) {
+		int i, j;
+		int p = 0;	// Hash value for pattern
+		int t = 0;	// Hash value for text
+		int h = 1;
+		
+		for (i = 0; i < pattern.length()-1; i++) {
+			h = (h*NUM_LETTERS_ALPHABET) % primeNum;
+		}
+		
+		for(i = 0; i < pattern.length(); i++) {
+			p = (p*NUM_LETTERS_ALPHABET + pattern.charAt(i)) % primeNum;
+			t = (t*NUM_LETTERS_ALPHABET + text.charAt(i)) % primeNum;
+		}
+		
+		for(i = 0; i <= (text.length()-pattern.length()); i++) {
+			if(p == t) {
+				for(j = 0; j < pattern.length(); j++) {
+					if(text.charAt(i+j) != pattern.charAt(j))	break;
+				}
+				
+				if(j == pattern.length())	System.out.println("Pattern found at index " + i);
+			}
+		}
+		
+		return false;
 	}
 }
