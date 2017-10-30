@@ -48,9 +48,8 @@ public class WarWithBST
 		for(int i = 0; i < s.length; i++) {
 			for(int j = 0; j < s.length; j++) {
 				temp = s[i]+s[j];
-				if(validCheck(temp)) {
+				if(validCheck(temp))
 					c.add(temp);
-				}
 			}
 		}
 		
@@ -59,9 +58,8 @@ public class WarWithBST
 	
 	private boolean validCheck(String t) {
 		for(int i = 0; i < t.length()-k; i++) {
-			if(!bst.search(t.substring(i,i+k))) {
+			if(!bst.search(t.substring(i,i+k)))
 				return false;
-			}
 		}
 		return true;
 	}

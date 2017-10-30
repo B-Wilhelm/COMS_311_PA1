@@ -35,9 +35,8 @@ public class WarWithHash
 		this.s = s;
 		this.k = k;
 		
-		for(String value : s) {
+		for(String value : s)
 			table.put(value, value);
-		}
 	}
 	
 	/**
@@ -52,9 +51,8 @@ public class WarWithHash
 		for(int i = 0; i < s.length; i++) {
 			for(int j = 0; j < s.length; j++) {
 				temp = s[i]+s[j];
-				if(validCheck(temp)) {
+				if(validCheck(temp))
 					c.add(temp);
-				}
 			}
 		}
 		
@@ -63,9 +61,8 @@ public class WarWithHash
 	
 	private boolean validCheck(String t) {
 		for(int i = 0; i < t.length()-k; i++) {
-			if(!table.contains(t.substring(i,i+k))) {
+			if(!table.contains(t.substring(i,i+k)))
 				return false;
-			}
 		}
 		return true;
 	}

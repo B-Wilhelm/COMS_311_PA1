@@ -71,9 +71,8 @@ public class WarWithRollHash
 		int t = 0;	// Hash value for text
 		int h = 1;
 		
-		for (i = 0; i < pattern.length()-1; i++) {
+		for (i = 0; i < pattern.length()-1; i++)
 			h = (h*NUM_LETTERS_ALPHABET) % primeNum;
-		}
 		
 		for(i = 0; i < pattern.length(); i++) {
 			p = (p*NUM_LETTERS_ALPHABET + pattern.charAt(i)) % primeNum;
@@ -83,10 +82,12 @@ public class WarWithRollHash
 		for(i = 0; i <= (text.length()-pattern.length()); i++) {
 			if(p == t) {
 				for(j = 0; j < pattern.length(); j++) {
-					if(text.charAt(i+j) != pattern.charAt(j))	break;
+					if(text.charAt(i+j) != pattern.charAt(j))
+						break;
 				}
 				
-				if(j == pattern.length())	System.out.println("Pattern found at index: " + i);
+				if(j == pattern.length())
+					System.out.println("Pattern found at index: " + i);
 			}
 		}
 		

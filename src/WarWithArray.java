@@ -47,9 +47,8 @@ public class WarWithArray
 		for(int i = 0; i < s.length; i++) {
 			for(int j = 0; j < s.length; j++) {
 				temp = s[i]+s[j];
-				if(validCheck(temp)) {
+				if(validCheck(temp))
 					c.add(temp);
-				}
 			}
 		}
 		
@@ -58,9 +57,8 @@ public class WarWithArray
 	
 	private boolean validCheck(String t) {
 		for(int i = 0; i < t.length()-k; i++) {
-			if(!Arrays.asList(s).contains(t.substring(i,i+k))) {
+			if(!Arrays.asList(s).contains(t.substring(i,i+k)))
 				return false;
-			}
 		}
 		return true;
 	}
