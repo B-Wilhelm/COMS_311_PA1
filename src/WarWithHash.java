@@ -31,9 +31,9 @@ public class WarWithHash
 	 */
 	public WarWithHash(String[] s, int k)
 	{
-		table = new Hashtable<String,String>(s.length);
 		this.s = s;
 		this.k = k;
+		this.table = new Hashtable<String,String>(s.length);
 		
 		for(String value : s)
 			table.put(value, value);

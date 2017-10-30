@@ -14,8 +14,6 @@
 */
 
 import java.util.ArrayList;
-import java.util.Hashtable;
-
 
 public class WarWithRollHash
 {
@@ -48,49 +46,62 @@ public class WarWithRollHash
 		for(int i = 0; i < s.length; i++) {
 			for(int j = 0; j < s.length; j++) {
 				temp = s[i]+s[j];
-				for(int k = 0; k < s.length; k++) {
-					if(validCheck(s[k], temp)) {
-						c.add(temp);
-					}
-				}
+				if(validCheck(temp))
+					c.add(temp);
 			}
 		}
 		
 		return c;
 	}
 	
-	private boolean validCheck(String pattern, String text) {
+	private boolean validCheck(String text) {
+		
+		String pattern;
 		int i, j;
 		int patternCount = 0;
-		int primeNum = 101;
-		int p = 0;	// Hash value for pattern
-		int t = 0;	// Hash value for text
-		int h = 1;
+		int primeNum;
+		int p;	// Hash value for pattern
+		int t;	// Hash value for text
+		int h;
 		
-		for (i = 0; i < pattern.length()-1; i++)
-			h = (h*NUM_LETTERS_ALPHABET) % primeNum;
-		
-		for(i = 0; i < pattern.length(); i++) {
-			p = (p*NUM_LETTERS_ALPHABET + pattern.charAt(i)) % primeNum;
-			t = (t*NUM_LETTERS_ALPHABET + text.charAt(i)) % primeNum;
+		if(text.length() < 1) {
+			return false;
 		}
 		
-		for(i = 0; i <= (text.length()-pattern.length()); i++) {
-			if(p == t) {
-				for(j = 0; j < pattern.length(); j++) {
-					if(text.charAt(i+j) != pattern.charAt(j))
-						break;
-				}
-				
-				if(j == pattern.length()) {
-					patternCount++;
-				}
+		for(int l = 0; l < s.length; l++) {
+			pattern = s[l];
+			primeNum = 101;
+			p = 0;
+			t = 0;
+			h = 1;
+			
+			for (i = 0; i < pattern.length()-1; i++)
+				h = (h*NUM_LETTERS_ALPHABET) % primeNum;
+			
+			for(i = 0; i < pattern.length(); i++) {
+				p = (p*NUM_LETTERS_ALPHABET + pattern.charAt(i)) % primeNum;
+				t = (t*NUM_LETTERS_ALPHABET + text.charAt(i)) % primeNum;
 			}
 			
-			if(i < (text.length()-pattern.length()))
-				t = (NUM_LETTERS_ALPHABET*(t - text.charAt(i)*h) + text.charAt(i + pattern.length())) % primeNum;
+			for(i = 0; i <= (text.length()-pattern.length()); i++) {
+				if(p == t) {
+					for(j = 0; j < pattern.length(); j++) {
+						if(text.charAt(i+j) != pattern.charAt(j))
+							break;
+					}
+					
+					if(j == pattern.length()) {
+						patternCount++;
+					}
+				}
+				
+				if(i < (text.length()-pattern.length())) {
+					t = (NUM_LETTERS_ALPHABET*(t - text.charAt(i)*h) + text.charAt(i + pattern.length())) % primeNum;
+					if(t < 0)
+						t += primeNum;
+				}
+			}
 		}
-		
-		return (patternCount > 0);
+		return (patternCount == k+1);
 	}
 }
