@@ -54,6 +54,11 @@ public class WarWithRollHash
 		return c;
 	}
 	
+	/**
+	 * 
+	 * @param	t	The 2*k length string that needs to have its validity checked
+	 * @return		Returns true if string is valid; false otherwise
+	 */
 	private boolean validCheck(String text) {
 		
 		String pattern;

@@ -59,6 +59,11 @@ public class WarWithHash
 		return c;
 	}
 	
+	/**
+	 * 
+	 * @param	t	The 2*k length string that needs to have its validity checked
+	 * @return		Returns true if string is valid; false otherwise
+	 */
 	private boolean validCheck(String t) {
 		for(int i = 0; i < t.length()-k; i++) {
 			if(!table.contains(t.substring(i,i+k)))
