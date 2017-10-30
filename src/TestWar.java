@@ -36,6 +36,6 @@ public class TestWar {
 		results = wr.compute2k().toString();
 		System.out.println(results);
 		time= (System.nanoTime() - start);
-		System.out.println("Time elapsed: " + time + "ns");
+		System.out.print("Time elapsed: " + time + "ns");
 	}
 }

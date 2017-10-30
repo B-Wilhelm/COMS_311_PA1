@@ -20,7 +20,7 @@ public class BinaryST
 	private BinaryST left;
 	
 	/**
-	 * 
+	 * Default Constructor; Creates a Binary Search Tree
 	 */
 	public BinaryST()
 	{
@@ -31,7 +31,7 @@ public class BinaryST
 	}
 	
 	/**
-	 * 
+	 * Constructor; Creates a Binary Search Tree and fills it with Strings from an array
 	 * @param 	s 	An array of strings that are placed inside of a new Binary Search Tree
 	 */
 	public BinaryST(String[] s)
@@ -41,7 +41,7 @@ public class BinaryST
 	}
 	
 	/**
-	 * 
+	 * Returns the number of unique strings in the Binary Search Tree
 	 * @return		The number of distinct strings stored in the Binary Search Tree
 	 */
 	public int distinctSize()
@@ -62,8 +62,8 @@ public class BinaryST
 	}
 	
 	/**
-	 * 
-	 * @return 		The total number of elements stored in the Binary Search Tree
+	 * Finds the total number of elements in the Binary Search Tree
+	 * @return 		The number of elements stored in the Binary Search Tree
 	 */
 	public int size()
 	{
@@ -79,7 +79,7 @@ public class BinaryST
 	}
 	
 	/**
-	 * 
+	 * Returns the height of the Binary Search Tree
 	 * @return 		The current height of the Binary Search Tree
 	 */
 	public int height()
@@ -97,7 +97,7 @@ public class BinaryST
 	}
 	
 	/**
-	 * 
+	 * Adds a string to the Binary Search Tree
 	 * @param	s	The string to be added to the Binary Search Tree
 	 */
 	public void add(String s)
@@ -121,7 +121,7 @@ public class BinaryST
 	}
 	
 	/**
-	 * 
+	 * Checks to see if an inputed string can be found in the Binary Search Tree
 	 * @param	s	The string to be searched for in the Binary Search Tree
 	 * @return		Returns true if the string is found in the Binary Search Tree; false otherwise
 	 */
@@ -141,7 +141,7 @@ public class BinaryST
 	}
 	
 	/**
-	 * 
+	 * Calculates the number of occurences a string has in the Binary Search Tree
 	 * @param	s	The string that will have its number of occurrences counted in the Binary Search Tree
 	 * @return		The number of times a string is found in the Binary Search Tree
 	 */
@@ -163,7 +163,7 @@ public class BinaryST
 	}
 	
 	/**
-	 * 
+	 * Removes a string from the Binary Search Tree
 	 * @param	s	The string that is to be removed from the Binary Search Tree
 	 * @return		Returns true if the string is found and removed; false otherwise
 	 */
@@ -175,7 +175,7 @@ public class BinaryST
     }
 	
 	/**
-	 * 
+	 * Helper method for removing a string from the Binary Search Tree
 	 * @param	s		The string that is to be removed from the Binary Search Tree
 	 * @param	root	The root of the Binary Search Tree
 	 * @return			Returns true if the string is found and removed; false otherwise
@@ -205,7 +205,7 @@ public class BinaryST
 	}
 	
 	/**
-	 * 
+	 * Returns the value on the left of the inputed root
 	 * @return			Returns the value on the left of a root; this will be the smallest element of a chain
 	 */
 	public String min() {
@@ -216,7 +216,7 @@ public class BinaryST
 	}
 	
 	/**
-	 * 
+	 * Creates a listing of the strings in the Binary Search Tree via in-order traversal
 	 * @return		Array of strings obtained from an in-order traversal of the Binary Search Tree
 	 */
 	public String[] inOrder()
@@ -225,7 +225,7 @@ public class BinaryST
 		
 		if( this.left != null )
 			currArray = appendArray(currArray, this.left.inOrder());
-		currArray = appendArray(currArray, new String[] {this.data});
+			currArray = appendArray(currArray, new String[] {this.data});
 		if( this.right != null )
 			currArray = appendArray(currArray, this.right.inOrder());
 		
@@ -233,7 +233,7 @@ public class BinaryST
 	}
 	
 	/**
-	 * 
+	 * Creates a listing of the strings in the Binary Search Tree via pre-order traversal
 	 * @return		Array of strings obtained from a pre-order traversal of the Binary Search Tree
 	 */	
 	public String[] preOrder()

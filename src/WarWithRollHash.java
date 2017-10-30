@@ -73,30 +73,29 @@ public class WarWithRollHash
 			primeNum = 101;
 			p = 0;
 			t = 0;
-			h = 1;
+			h = 1;				
 			
-			for (i = 0; i < pattern.length()-1; i++)
-				h = (h*NUM_LETTERS_ALPHABET) % primeNum;
-			
-			for(i = 0; i < pattern.length(); i++) {
+			for(i = 0; i < k; i++) {
 				p = (p*NUM_LETTERS_ALPHABET + pattern.charAt(i)) % primeNum;
 				t = (t*NUM_LETTERS_ALPHABET + text.charAt(i)) % primeNum;
+				if(i < k-1)
+					h = (h*NUM_LETTERS_ALPHABET) % primeNum;
 			}
 			
-			for(i = 0; i <= (text.length()-pattern.length()); i++) {
+			for(i = 0; i <= (text.length()-k); i++) {
 				if(p == t) {
-					for(j = 0; j < pattern.length(); j++) {
+					for(j = 0; j < k; j++) {
 						if(text.charAt(i+j) != pattern.charAt(j))
 							break;
 					}
 					
-					if(j == pattern.length()) {
+					if(j == k) {
 						patternCount++;
 					}
 				}
 				
-				if(i < (text.length()-pattern.length())) {
-					t = (NUM_LETTERS_ALPHABET*(t - text.charAt(i)*h) + text.charAt(i + pattern.length())) % primeNum;
+				if(i < (text.length()-k)) {
+					t = (NUM_LETTERS_ALPHABET*(t - text.charAt(i)*h) + text.charAt(i + k)) % primeNum;
 					if(t < 0)
 						t += primeNum;
 				}
